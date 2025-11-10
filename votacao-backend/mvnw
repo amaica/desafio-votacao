@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+BASEDIR=$(cd "$(dirname "$0")"; pwd -P)
+WRAPPER_JAR="$BASEDIR/.mvn/wrapper/maven-wrapper.jar"
+WRAPPER_PROPERTIES="$BASEDIR/.mvn/wrapper/maven-wrapper.properties"
+if [ ! -f "$WRAPPER_PROPERTIES" ]; then
+  echo "Error: $WRAPPER_PROPERTIES is missing." >&2
+  exit 1
+fi
+if [ ! -f "$WRAPPER_JAR" ]; then
+  echo "Downloading Maven Wrapper jar..."
+  WRAPPER_URL=$(grep -E '^wrapperUrl=' "$WRAPPER_PROPERTIES" | cut -d'=' -f2-)
+  if command -v curl >/dev/null 2>&1; then
+    curl -fsSL "$WRAPPER_URL" -o "$WRAPPER_JAR"
+  elif command -v wget >/dev/null 2>&1; then
+    wget -q -O "$WRAPPER_JAR" "$WRAPPER_URL"
+  else
+    echo "Error: curl or wget required to download Maven Wrapper." >&2
+    exit 1
+  fi
+fi
+JAVA_CMD="${JAVA_HOME:+$JAVA_HOME/bin/}java"
+exec "$JAVA_CMD" -cp "$WRAPPER_JAR" org.apache.maven.wrapper.MavenWrapperMain "$@"

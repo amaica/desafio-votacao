@@ -1,0 +1,54 @@
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+
+  color: #1f2937;  
+  background-color: #f6f7fb; 
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #2563eb;          
+  text-decoration: none;
+}
+a:hover { color: #1d4ed8; }
+
+body {
+  margin: 0;
+
+  min-width: 320px;
+  min-height: 100vh;
+  color: inherit;
+  background: inherit;
+}
+
+
+h1, h2, h3, h4, h5, h6 { color: #0f172a; }
+
+
+.app-container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+
+.p-component { color: #1f2937; }
+.surface-ground { background: #f6f7fb; color: #1f2937; }
+.surface-card   { background: #fff;    color: #1f2937; }
+
+.p-datatable .p-datatable-thead > tr > th,
+.p-datatable .p-datatable-tbody > tr > td {
+  color: #1f2937;
+}
+
+.p-button { color: #fff; } 
+
+
+button:focus,
+button:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }

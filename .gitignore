@@ -1,0 +1,32 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/timing.properties
+
+# Java
+*.class
+*.log
+*.iml
+*.jar
+*.war
+*.ear
+hs_err_pid*
+
+# Node / React (Vite)
+**/node_modules/
+**/.env
+**/.env.*.local
+**/dist/
+**/.vite/
+
+# IDE / OS
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Coverage/Reports
+**/coverage/
+**/reports/
+**/test-results/
