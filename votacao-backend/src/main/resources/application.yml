@@ -46,3 +46,10 @@ cpf:
   check:
     enabled: ${CPF_CHECK_ENABLED:false}  # false = bypass; true = client aleatório
   base-url: ${CPF_BASE_URL:http://localhost:9561}
+
+  logging:
+  level:
+    root: INFO
+    com.seuprojeto: DEBUG   # ajuste o pacote-base do seu projeto
+  pattern:
+    console: "%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX} %-5level %logger{36} - %msg%n"

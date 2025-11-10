@@ -1,0 +1,194 @@
+{
+  "info": {
+    "_postman_id": "0053a270-74a1-4179-99f9-92cb78755b4a",
+    "name": "Desafio Votação - API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": "Coleção Postman para o sistema de votação (pautas, sessão, votos e resultado). Use {{baseUrl}} como variável."
+  },
+  "item": [
+    {
+      "name": "Pautas",
+      "item": [
+        {
+          "name": "Criar Pauta",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"titulo\": \"Minha primeira pauta\",\n  \"descricao\": \"Descrição opcional da pauta\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pautas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pautas"
+              ]
+            },
+            "description": "Cria uma nova pauta."
+          },
+          "response": []
+        },
+        {
+          "name": "Listar Pautas",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pautas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pautas"
+              ]
+            },
+            "description": "Lista todas as pautas."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Sessão",
+      "item": [
+        {
+          "name": "Abrir Sessão (duracao opcional)",
+          "request": {
+            "method": "POST",
+            "url": {
+              "raw": "{{baseUrl}}/pautas/:id/sessao?duracao=60",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pautas",
+                ":id",
+                "sessao"
+              ],
+              "query": [
+                {
+                  "key": "duracao",
+                  "value": "60"
+                }
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REPLACE_WITH_PAUTA_ID"
+                }
+              ]
+            },
+            "description": "Abre a sessão de votação para a pauta informada. A duração é opcional (padrão 60s)."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Votos",
+      "item": [
+        {
+          "name": "Votar (SIM ou NAO)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cpf\": \"11122233344\",\n  \"opcao\": \"SIM\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/pautas/:id/votar",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pautas",
+                ":id",
+                "votar"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REPLACE_WITH_PAUTA_ID"
+                }
+              ]
+            },
+            "description": "Registra um voto para a pauta. Valida CPF (11 dígitos) e impede voto duplicado por pauta."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Resultado",
+      "item": [
+        {
+          "name": "Obter Resultado da Pauta",
+          "request": {
+            "method": "GET",
+            "url": {
+              "raw": "{{baseUrl}}/pautas/:id/resultado",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "pautas",
+                ":id",
+                "resultado"
+              ],
+              "variable": [
+                {
+                  "key": "id",
+                  "value": "REPLACE_WITH_PAUTA_ID"
+                }
+              ]
+            },
+            "description": "Obtém o resultado (contagem de SIM/NAO) e status da sessão."
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Ajustes ou variáveis dinâmicas podem ser feitos aqui."
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "// Você pode adicionar asserts de status aqui, ex.:",
+          "// pm.test('Status 200/201', function() {",
+          "//   pm.expect(pm.response.code).to.be.oneOf([200,201,204]);",
+          "// });"
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080/api/v1"
+    }
+  ]
+}
