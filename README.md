@@ -1,21 +1,22 @@
+---
 
-````markdown
 # 🗳️ Desafio Votação – Spring Boot + React
 
-Sistema de **votação cooperativa**: criar pautas, abrir sessões temporizadas e registrar votos **SIM/NÃO**.  
+Sistema de **votação cooperativa**: criar pautas, abrir sessões temporizadas e registrar votos **SIM/NÃO**.
 Backend **Spring Boot (Java 17)**, frontend **React + PrimeReact** e banco **MySQL + Flyway**, orquestrados por **Docker Compose**.
 
-👉 Repositório: https://github.com/amaica/desafio-votacao
+👉 Repositório: [https://github.com/amaica/desafio-votacao](https://github.com/amaica/desafio-votacao)
 
 ---
 
 ## 🚀 Como rodar (Docker Compose – recomendado)
 
 Clone o repositório:
+
 ```bash
 git clone https://github.com/amaica/desafio-votacao.git
 cd desafio-votacao
-````
+```
 
 Suba tudo (banco + backend + frontend):
 
@@ -90,12 +91,12 @@ npm run dev
 ## 🔥 API — Endpoints principais
 
 | Método | Endpoint                                | Descrição                    |
-| ------ | --------------------------------------- | ---------------------------- |
+| -----: | --------------------------------------- | ---------------------------- |
 | `POST` | `/api/v1/pautas`                        | Cria pauta                   |
-| `GET`  | `/api/v1/pautas`                        | Lista pautas                 |
+|  `GET` | `/api/v1/pautas`                        | Lista pautas                 |
 | `POST` | `/api/v1/pautas/{id}/sessao?duracao=60` | Abre sessão                  |
 | `POST` | `/api/v1/pautas/{id}/votar`             | Registra voto `{cpf, opcao}` |
-| `GET`  | `/api/v1/pautas/{id}/resultado`         | Resultado (SIM/NÃO + status) |
+|  `GET` | `/api/v1/pautas/{id}/resultado`         | Resultado (SIM/NÃO + status) |
 
 **Exemplo (curl)**
 
@@ -235,5 +236,3 @@ Exemplos:
 * `docs: adiciona Postman e instruções Docker`
 
 ---
-
-
